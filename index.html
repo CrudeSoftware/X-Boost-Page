@@ -3,13 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="0; url=https://xbs.onrender.com/">
-    <link rel="canonical" href="https://xbs.onrender.com/">
     <title>Redirecting...</title>
-    
-    <!-- JavaScript Fallback Redirect -->
+
     <script>
-        window.location.replace("https://xbs.onrender.com/");
+        const DESTINATION_URL = "https://x-boost-api-80782.containers.snapdeploy.app/";
+
+        const metaRefresh = document.createElement("meta");
+        metaRefresh.httpEquiv = "refresh";
+        metaRefresh.content = `0; url=${DESTINATION_URL}`;
+        document.head.appendChild(metaRefresh);
+
+        const canonical = document.createElement("link");
+        canonical.rel = "canonical";
+        canonical.href = DESTINATION_URL;
+        document.head.appendChild(canonical);
+
+        window.location.replace(DESTINATION_URL);
     </script>
 
     <style>
@@ -38,7 +47,10 @@
 </head>
 <body>
     <div class="container">
-        <p>If you are not redirected automatically, <a href="https://xbs.onrender.com/">click here</a>.</p>
+        <p>If you are not redirected automatically, <a id="fallback-link" href="#">click here</a>.</p>
     </div>
+    <script>
+        document.getElementById("fallback-link").href = DESTINATION_URL;
+    </script>
 </body>
 </html>
